@@ -1,0 +1,26 @@
+package primero;
+
+import java.util.Scanner;
+
+public class Clase1 {
+
+	public static String ponerPalabra() {
+		Scanner scan = new Scanner (System.in);
+		System.out.print("Ingreser la palabra:");
+		return scan.nextLine();
+	}
+	
+	public static String pedirNombre() {
+		Scanner scan = new Scanner (System.in);
+		System.out.print("Ingrese su nombre:");
+		return scan.nextLine();
+	}
+	public static void main (String[]args) {
+		
+		String palabra = ponerPalabra();
+		String nombre = pedirNombre();
+		System.out.print(palabra + " Mi nombre es: " + nombre);
+	}
+}
+
+//Primera clase.

@@ -38,7 +38,7 @@ public class Clase2 {
 }
 
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 public class UltimoEjerciciostring {
 
@@ -72,7 +72,7 @@ public class UltimoEjerciciostring {
 	
 }
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 public class UltimoEjecrcico {
 
@@ -85,6 +85,107 @@ public class UltimoEjecrcico {
 	}
 	
 	public static void main (String[]args) {
+		
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+package Pepin;
+
+import java.util.Iterator;
+
+public class Loli {
+	
+	public static boolean esCapicua(String s) {
+		String k ="";
+		for (int i = s.length() - 1; i >= 0; i--) {
+			k = k + s.charAt(i);
+		}
+		return s.equals(k); //devuelve true si son iguales, y false si no sonn iguales.
+	}
+
+	public static boolean esDobletepicua(String s) {
+		String s1, s2= "";
+		for (int i = 0; i < s.length(); i++) {
+			s1= s.substring(0, i+1);
+			s2= s.substring(i+1);
+			if (esCapicua(s1) && esCapicua(s2)) {
+			return true;
+			}
+		
+		}	
+		return false;
+	}
+	
+	public static void main(String[] args) {
+		
+		
+		System.out.print(esDobletepicua("neuquenoro"));
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+Arregle coleccion ordenada de valores(i.e., una secuencia) donde: Cada valor esta identificado por un indice, todos los valores son del mismo tipo, el largo de la colleccion es fijo
+Los arreglos son objetos.
+
+int [] ar = new int [5];
+ar [0] = 2
+ar[1] = 4
+ar [2] = 6
+ar[3] = 8
+ar [4] = 10
+
+int []ar= {1, 4, 5, 9, 7}
+
+int []ar3; //null
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+public class Teamofacu {
+	public static void agregarElem(int[] ar, int elem){
+		int[] ar2 = new int [ar.lenght +1];
+		for (int i =0; i < ar.lenght; i++) {
+			ar2[i]= ar(i);
+		}
+		ar2[ar2.length - 1]=elem;
+		ar =ar2;
+	}
+	public static boolean estaElem(int[] ar, int elem) {
+		for (int i = 0; i < ar.length; i++) {
+			if (ar[i] == elem) {
+				return true;
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+package Pepin;
+
+import java.util.Arrays;
+
+public class jjiji {
+
+	public static int[] quitar(int[]a, int pos) {
+		int j = 0;
+		int []ar2 = new int [a.length - 1];
+		for (int i = 0; i < a.length; i++) {
+			if (i != pos) {
+				
+			}
+		}
+	}
+	
+	public static void main (String[]args) {
+		
+		
+		System.out.println(Arrays.toString(ar2));
 		
 	}
 }

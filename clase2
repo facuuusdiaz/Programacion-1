@@ -1,0 +1,90 @@
+//se puede trabajar con una cadena epro nunca modificar, todo objeto tiene dos partes datos y metodos. Si string es un objeto puedo haer un monton de cosas, si tenemos la String ba y ponemos ba. saldran todas las cosas que podremos hacer con la string (funciones)
+isEmpty pergunta si la string esta vacia (si no tiene ningun valor devuelve true). toUpperCase toLowerCase sirven para poner todo en minisculas o todo en mayusculas (No se cambia la String con ninguno de ellos, Una String es inmutable)
+
+for (int i = 0; i < b.length() - 1; i++){
+  if (b.charAt(i)<= b.charAt(i+1)
+}
+
+String c = "Amorosa";
+c.substring(3) //devuelve desde el parametro hasta el final 
+c.substring(2, 4) //devuelve el primer parametro y el segundo - 1
+
+//todos son metodos de la clase String, le podemos hacer cierta similitud con el def de phyton
+
+public class Clase2 {
+	
+	public static String pedirNombre() {
+		Scanner scan = new Scanner (System.in);
+		System.out.println("Inserte un numero:");
+		return scan.nextLine();
+	}
+
+	public static boolean esPrimo(int n) {
+		for(int i = 2; i < n - 1; i++) {
+			if (n % 1 == 0) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public static void main (String[]args){
+		
+		int numero = Integer.parseInt(pedirNombre());
+		
+		System.out.println(esPrimo(numero));
+		
+	}
+}
+
+
+
+
+public class UltimoEjerciciostring {
+
+	public static boolean palabrasCruzadas(String a, String b, String c) {
+		
+		if (a.length() == 0 || b.length() == 0 || c.length() == 0) {
+			return false;
+		}
+			
+		a = a.toUpperCase();
+		b = b.toUpperCase();
+		c = c.toUpperCase();
+		
+		for (int i = 0; i < b.length(); i++) {
+			if (a.indexOf(b.charAt(i)) != - 1) { //Ubicamos a en b.
+				i++;
+				for (int j = i + 1; j < b.length();j++) {
+					if (c.indexOf(b.charAt(j)) != -1) { //Ubicamos c en b.
+						return true;
+					}
+				}
+			}
+		}
+		
+		return false;
+		}
+	
+	public static void main (String []args) {
+		
+	}
+	
+}
+
+
+
+public class UltimoEjecrcico {
+
+	public static boolean esCapicua(String s) {
+		String k ="";
+		for (int i = s.length() - 1; i >= 0; i--) {
+			k = k + s.charAt(i);
+		}
+		return s.equals(k); //devuelve true si son iguales, y false si no sonn iguales.
+	}
+	
+	public static void main (String[]args) {
+		
+	}
+}

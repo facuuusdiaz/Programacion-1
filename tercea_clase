@@ -37,7 +37,7 @@ public class Clase258 {
 		return recursion;
 	}
 	
-	public static int potenciaRec (double x, int n) {
+	public static double potenciaRec (double x, int n) {
 		if (n == 0) {
 			return 1;
 		}else {
@@ -47,7 +47,6 @@ public class Clase258 {
 			
 		}
 		
-		Math.pow(x, n);
 	}
 	
 	public static void main (String[]args) {

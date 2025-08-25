@@ -1,0 +1,57 @@
+Recursividad: Es importante paa pogra 1 y progra 2, la recursividad funciona en base al stack. una funcion es recursiva si en algun momento se llama asi misma.
+La sucesion de Fibonacci: 
+
+package paquet1;
+
+public class Clase258 {
+
+	public static int factorial(int n) {
+		if (n == 0) { //caso base.
+			return 1;
+		} else {
+			int recursion = factorial(n-1);
+			int resultado = n * recursion;
+			return resultado;
+		}
+	}
+	
+	public static int sumatoria (int n) {
+		if (n == 2) {
+			return n;
+		} else {
+			int recursion = sumatoria(n-1);
+			int resultado = n * recursion;
+			return resultado;
+		}
+	}
+	
+	public static int sumatoriaParesRec (int n) {
+		if (n == 2) {
+			return 2;
+		} 
+		int recursion = sumatoriaParesRec(n-1);
+		if (n %2 == 0){
+			int resultado = n + recursion;
+			return resultado;
+		}
+		return recursion;
+	}
+	
+	public static int potenciaRec (double x, int n) {
+		if (n == 0) {
+			return 1;
+		}else {
+			double recursion = potenciaRec(x, n - 1);
+			double resultado = x * recursion;
+			return resultado;
+			
+		}
+		
+		Math.pow(x, n);
+	}
+	
+	public static void main (String[]args) {
+		int resul = sumatoriaParesRec(10);
+		System.out.print(resul);
+	}
+}

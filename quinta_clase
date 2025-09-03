@@ -1,3 +1,17 @@
+
+double dist = math.sqrt((x2-x1)* (x2-x1) +(y2-y1)*(y2-y1));
+		
+		(x1+x2)/2, (y1+y2)/2
+		
+		x >= x1 && x1 <= x + ancho
+		y1 >= y && y1 <= y + alto
+		
+		xr3= num (r1x, r2x);
+		yr3 = num (r1y, r2y);
+
+
+
+
 public class Fecha {
 	int dia;
 	int mes;

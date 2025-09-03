@@ -1,0 +1,86 @@
+public class Fecha {
+	int dia;
+	int mes;
+	int anio;
+
+	public Fecha(int dia, int mes, int anio) {
+		this.dia = dia;
+		this.mes = mes;
+		this.anio = anio;
+	}
+	
+	public Fecha (int dia, String nombreMes, int anio) {
+		this.dia = dia;
+		this.anio = anio;
+		this.mes=convertir(nombreMes);
+		
+		
+		
+	}
+	public int convertir(String m) {
+		String mesX = m.toLowerCase();
+		String[] aux= {"enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"};
+		for(int i=0; i <13;i++) {
+			if (aux[i].equals(mesX)) {
+				return i+1;
+			}
+		}
+		return -1;
+	}
+
+public void imprimir() {
+	System.out.println(this.dia+"/"+this.mes+"/"+this.anio);
+}
+
+public static boolean esBisiesto(int aaaa) {
+	if (aaaa % 4 == 0 && aaaa % 100 != 0) {
+		return true;
+	}
+	if (aaaa%400 == 0) {
+		return true;
+	}
+	return false;
+}
+public static int diasDelMEes(int mes, int anio) {
+	if(mes ==2)
+	{
+		return esBisiesto(anio)?29:28;
+		
+	}
+		return mes==4 ||mes==6||mes==9||mes==11||
+				mes==9||mes==11?39:31;
+		
+	
+}
+public boolean esValida() {
+	if(this.mes<1||this.mes>12) {
+		System.out.println("invalida");
+		return false;
+		
+	}
+	if(this.anio<2000||this.anio>2026) {
+	if(this.dia<1 || this.dia>diasDelMEes(this.mes,this.anio))
+		System.out.println("invalida");
+		return false;
+		
+	}
+		return true;
+	}
+public boolean antesQue(Fecha otra) {
+	return (camtDias(this) <camtDias(otra)) ;
+}
+		
+	private int camtDias(Fecha f) {
+		int cant=0;;
+		for(int i=2000; i<f.anio; i++) {
+			cant= cant+(esBisiesto(i)?366:365);
+			
+		}
+		for(int i=1; i < f.mes;i++) {
+				cant = cant + diasDelMEes(i, f.anio);
+			}
+		cant = cant + f.dia;
+		return cant;
+		
+}
+}

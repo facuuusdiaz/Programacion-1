@@ -1,0 +1,165 @@
+Una instancia representa un concepto (valido) de una clase (rectangle, fecha, etc)
+las variables de instacia de un objeto representan su estado actual. 
+Cualquier conceprto valido de una clase (rectangle, fecha, etc) puede ser representado por un conjunto de valores para sus variables de instancia
+pero no ocurre lo mismo al reves
+
+conjunto de propiedades quedeben cumplir los "datos internos" de un objeto apra asegurar que dicho objeto representa un "concepto" valido.
+
+cuando declaramos una variable de instancia, definimos su divisibilidad.
+cuando una variable es privada, solo es accesible desde dentro de la clase
+
+aparece el get, y sirve para publicar (o exportar) mediante una funcion, ahora podemos "ver" una variable privada desde afuera de la clase, y si queremos editar hacemos algo similar.
+
+
+package hoa;
+
+
+	
+
+public class Fecha {
+
+private int dia;
+private int mes;
+private int anio;
+
+public Fecha(int dia, int mes, int anio) {
+	setDia (dia);
+	setMes  (mes);
+	setAnio  (anio);
+}
+
+public Fecha (int dia, String nombreMes, int anio) {
+	this.dia = dia;
+	this.anio = anio;
+	this.mes=convertir(nombreMes);
+	
+	
+	
+}
+public int convertir(String m) {
+	String mesX = m.toLowerCase();
+	String[] aux= {"enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"};
+	for(int i=0; i <13;i++) {
+		if (aux[i].equals(mesX)) {
+			return i+1;
+		}
+	}
+	return -1;
+}
+
+public void imprimir() {
+System.out.println(this.dia+"/"+this.mes+"/"+this.anio);
+}
+
+public static boolean esBisiesto(int aaaa) {
+if (aaaa % 4 == 0 && aaaa % 100 != 0) {
+	return true;
+}
+if (aaaa%400 == 0) {
+	return true;
+}
+return false;
+}
+public static int diasDelMEes(int mes, int anio) {
+if(mes ==2)
+{
+	return esBisiesto(anio)?29:28;
+	
+}
+	return mes==4 ||mes==6||mes==9||mes==11||
+			mes==9||mes==11?39:31;
+	
+
+}
+public boolean esValida() {
+if(this.mes<1||this.mes>12) {
+	System.out.println("invalida");
+	return false;
+	
+}
+if(this.anio<2000||this.anio>2026) {
+if(this.dia<1 || this.dia>diasDelMEes(this.mes,this.anio))
+	System.out.println("invalida");
+	return false;
+	
+}
+	return true;
+}
+public boolean antesQue(Fecha otra) {
+return (cantDias(this) <cantDias(otra)) ;
+}
+	
+private int cantDias(Fecha f) {
+	int cant=0;;
+	for(int i=2000; i<f.anio; i++) {
+		cant= cant+(esBisiesto(i)?366:365);
+		
+	}
+	for(int i=1; i < f.mes;i++) {
+			cant = cant + diasDelMEes(i, f.anio);
+		}
+	cant = cant + f.dia;
+	return cant;
+	
+}
+}
+public int diasdediferenciacion(Fecha otra) {
+	return Math.abs(cantDias(this)-cantDias(otra));
+	
+	
+}
+
+public int getDia() {
+	return dia;
+}
+
+public void setDia(int dia) {
+	int diasDelMes= diasDelMEes(this.mes,this.anio);
+	if(dia <1||dia> diasDelMEes(dia,mes,anio)) {
+	this.dia = dia;
+}
+}
+public int getMes() {
+	return mes;
+}
+// Pre-Condicion
+public void setMes(int mes) {
+	if(mes<1||mes>12) {
+		throw new RuntimeException("debe ser un mes valido");
+	}
+	this.mes = mes;
+}
+//Post_condicion 
+
+public int getAnio() {
+	return anio;
+}
+
+public void setAnio(int anio) {
+	if (anio<2000) {
+		throw new RuntimeException("año no valido");
+	}
+	this.anio = anio;
+	
+	//REglas del negocio que el año sea mayor a 12
+	
+	/*IREP:
+	*
+	*
+	*
+	*Año tiene que ser mayor o igual a 2000
+	*mes mayor o igual que 1, o menor que 13
+	*Dia tiene que ser >= 1, y de acuerdo al mes y año se puede saber los dias de cada mes
+	*deben ser menores a 28, 29, 30 o 31
+	*
+	*
+	*
+	*
+	*
+	*
+	*
+	*
+	*
+	*
+	*/
+}

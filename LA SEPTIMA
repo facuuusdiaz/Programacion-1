@@ -1,0 +1,137 @@
+errores irrecuperables, errores de sintaxis, errores en ejecuvion (distintos tipos), errores impredecibles. Las excepciones nos permiten controlar y enviar un mensaje al usuario, es una parada abrupta de la eejecucion.
+las excepciones son objetos, excepciones de runtime (durante la ejecucion), excepciones de input y output. LAs excepciones permiten representar errores en tiempo de ejcucion y manejar estos errores de una manera ordenada.
+forma dew generar una excepcion "throw new RuntimeException(""¡El String esat vacio!");
+
+Es ordenado porque la excepcion lanzada contienee informacion. Si se produce una excepcion y esta no es manejable, se interrumpe el programa. Se necesita un mecanismo para poder capturar las excepciones, para ello 
+se cuenta con la estructura try/catch.
+
+forma de uso:
+try
+{
+//codigo normal
+}
+catch (tipoDeExcepcion nombreVariable)
+{
+//codigo para manejar el caso de exceepcion
+}
+
+ejemplos:
+
+String abc = "abcdefghijklmnnopqrstuvwxyz" ; 
+try { 
+Scanner scan = new Scanner(System.in); 
+System.out.println( Ingrese el numero de letra del abecedario + que quiere consultar: );
+int i = scan.nextInt(); 
+System.out.println( La letra numero + i + es + abc.charAt(i 1)); 
+}
+catch(StringIndexOutOfboundsException ex)
+{
+System.out.println( "El numero debe estar entre 1 y " + abc.length() );
+}
+catch(NumberFormatExceotion ex)
+{
+System.out.println("El valor que ingreso no es un numero")
+catch(Exception ex)
+{
+System.out.println(" Se produjo un error con el valor ingresado" );
+}
+
+Las excepciones se lanzan utilizando las instruccio throw, Una excepcion ees un objeto que representa una situacion aanormal.
+
+
+Strins = "Algo distinto de hola mundo";
+
+try {
+System.out.println("La letra que mas aparece en " + s + " es:");
+char c = caracterMasRepetido(s)
+System.out.println(c);
+}
+catch (exception ex)
+{
+System.out.println("La string esta vaacia")
+}
+
+finally
+
+
+
+package pepaEscribi;
+
+public class MarcoDondeEstas {
+	
+	 public static char caracterMAsRepetido(String s) {
+		if (s.length()== 0) {
+			throw new RuntimeException("La String esta vacia");
+		}
+	
+		int max =0;
+		char r = s.charAt(0);
+		
+		for ( int i = 0; i < s.length(); i++) {
+			if(cantRepeticiones(s,s.charAt(i)) > max) {
+			r=s.charAt(i);
+			max=cantRepeticiones(s,s.charAt(i));
+			}
+		}
+		
+		return r;
+		
+	}
+	 public static int cantRepeticiones(String g, char x) {
+		 int cant =0;
+		 for(int i=0 ; i<g.length(); i++) {
+			 if(g.charAt(i)==x)
+			 {
+				 cant ++;
+			 }
+		 }
+		 return cant;
+	 }
+}
+
+
+package pepaEscribi;
+
+public class Test {
+	public static void main(String[]args) {
+		try {
+		String s = "";
+		System.out.println(MarcoDondeEstas.caracterMAsRepetido(s));
+			
+			
+	}
+		catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+
+}
+}
+
+
+package pepaEscribi;
+
+import java.util.Scanner;
+
+public class IndiceCaracteres {
+
+	public static void main (String[]args) {
+		String abc ="abcdefghijklmnñopqrstuvwxyz;";
+		try {
+			Scanner scan = new Scanner(System.in);
+			System.out.println ("Ingrese el numerp de " + "Letra del abecedario que quiere " + "Consultar:");
+			int i = scan.nextInt();
+			System.out.println("La letra numero " + i + " es " + abc.charAt(i - 1));
+			
+			}
+		
+		catch (StringIndexOutOfBoundsException ex) {
+			System.out.println("Indice invalido " + ex.getMessage());
+		}
+		catch(ArithmeticException ex){
+			System.out.println("No se puede dividir " + ex.getMessage());
+		}
+		catch (Exception ex) {
+		System.out.println ("Se produjo un error con el valor ingresado");	
+		}
+	}
+}

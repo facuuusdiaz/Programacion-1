@@ -1,0 +1,125 @@
+package marcosRodriguez;
+
+public class Comision {
+
+	String materia;
+	int numero;
+	Docente [] docentes;
+	Estudiante [] inscriptos;
+	int [] calificaciones;
+	
+	public boolean estaEstudiante(Estudiante e2) {
+		for (Estudiante e:this.inscriptos) {
+			if (e.equals(e2)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean estaDocente (Docente d2) {
+		for (Docente d:this.docentes) {
+			if (d.equals(d2)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public int laMejorNota() {
+		
+		int mejorNota = 0;
+		for (int i = 1; i < this.calificaciones.length; i++) {
+	        if (this.calificaciones[i] > mejorNota) {
+	            mejorNota = this.calificaciones[i];
+	        }
+	    }
+
+	    return mejorNota;
+	}
+
+	
+	public int alumnosConMejorNota() {
+		int cantAlum = 0;
+		for (int i = 0; i < this.inscriptos.length; i++) {
+			if(this.calificaciones[i] == laMejorNota()) {
+				cantAlum ++;
+			}
+		}
+		return cantAlum;
+	}
+
+	public void alumnosConMejorNota(int laMejorNota) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+
+
+package marcosRodriguez;
+
+public class UNGS {
+
+	Comision [] comisiones;
+	
+	boleean cursaCon(Estudiante e, Docente d) {
+		for (Comision con:this.comisiones) {
+			if(con.estaDocente(d) && con.estaEstudiante(e)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	boolean sufivcientesDocentes() {
+		for (Comision co:this.comisiones) {
+			if (co.inscriptos.length /20 < co.docentes.length) {
+				return false;
+			}
+		}
+		return true
+	}
+	
+	//Estudiante elMasEstudioso () {
+		//Estudiante
+	//}
+	
+	private int cantidadaprobadas (Estudiante masEst) {
+		int cant = 0;
+		for (Comision cc:this.comisiones){
+			if (cc.inscrptos[i].equals(masEst && cc.calificaciones[i] >= 4)) {
+				cant++;
+			}
+		}
+		
+		return cant;
+	}
+	public int losMejores() {
+		int cantAlum = 0;
+		//para cada comision
+		for (Comision c:this.comisiones) {
+			c.laMejorNota();
+			// Cuento los alumnos que obtuvieron mejor nota
+			c.alumnosConMejorNota(c.laMejorNota());
+			}
+		
+		return cantAlum;
+		}
+	
+	public int alumnosDe (Docente d) {
+		int cant = 0;
+		for (Comision c: this.comisiones ) {
+			if (c.estaDocente(d)){
+				cant += c.inscriptos.length;
+			}
+		}
+		return cant;
+	}
+	
+		
+
+}
+
+
+

@@ -121,5 +121,139 @@ public class UNGS {
 
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+package aerolinea;
+
+public class Aerolinea {
+	Vuelo[] vuelos;
+	
+	int vuelosEn(Tripulante t, String tipoAvion) {
+		int cant = 0;
+		for (Vuelo v: this.vuelos) {
+			if (v.avion.tipo.equals(tipoAvion) && v.estaTripulante(t)) {
+				cant++;
+			}
+		}
+			
+		return cant;
+	}
+	
+	int antiguedadPromedio(String tipoAvion) {
+		int promAnt = 0;
+		int cantTrip = 0;
+		
+		for (Vuelo v: this.vuelos) {
+			if (v.avion.tipo.equals(tipoAvion)) {
+				promAnt += v.sumaAntiguegad();
+				cantTrip ++;
+			}
+		}
+		
+		return promAnt / cantTrip;
+	}
+	
+	
+	Vuelo elMasInspeccionado (){
+		Vuelo masIns = this.vuelos[0];
+		int cantMaxInspectores = this.vuelos[0].cantDe("Inspector");
+		for (Vuelo v: this.vuelos) {
+			if(v.cantDe("Inspector") > cantMaxInspectores) {
+				masIns = v;
+				cantMaxInspectores = v.cantDe("Inspector");
+			}
+			
+		}
+		
+		return masIns;
+	}
+	
+	boolean hayVueloSobrecargado() {
+		for (Vuelo v: this.vuelos) {
+			if (v.estaSobrecargado()) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	Tripulante pilotoDelMes() {
+			Tripulante pilotoMes = this.vuelos[0].damePiloto();
+			int vuelosConPilotoMes = cantVuelosPiloto(pilotoMes);
+			for (Vuelo v: this.vuelos) {
+				if(cantVuelosPiloto(v.damePiloto()) > vuelosConPilotoMes) {
+					pilotoMes = v.damePiloto();
+					vuelosConPilotoMes = cantVuelosPiloto(v.damePiloto());
+				}
+				
+			}
+			
+			return pilotoMes;
+		}
+
+	private int cantVuelosPiloto(Tripulante pilotoMes) {
+		int cantVuelos = 0;
+		for (Vuelo v: this.vuelos) {
+		if (v.damePiloto().equals(pilotoMes)){
+			cantVuelos++;
+		}
+	}
+		return cantVuelos
+	}
+}
+
+package aerolinea;
+
+public class Vuelo {
+ Avion avion;
+ Tripulante [] tripulacion;
+public int sumaAntiguegad() {
+	int cant = 0;
+	for (Tripulante tr:this.tripulacion) {
+		cant += tr.antiguedad;
+	}
+	
+	return cant;
+}
+
+public boolean estaTripulante(Tripulante t) {
+	for (Tripulante tr:this.tripulacion) {
+		if (tr.equals(t)){
+			return true;
+		}
+	}
+	return false;
+}
+
+public int cantDe(String cargo) {
+	int cantInsp = 0;
+	for (Tripulante t: this.tripulacion) {
+		if(t.cargo.equals(cargo)) {
+			cantInsp++;
+		}
+	}
+	return cantInsp;
+}
+
+public boolean estaSobrecargado() {
+	return cantDe("Aeromozo") >this.avion.capacidad * 0.1;
+}
+
+public Tripulante damePiloto() {
+	for (Tripulante tr: this.tripulacion) {
+		if (tr.cargo.equals("Piloto")) {
+			return tr;
+		}
+	}
+	throw new RuntimeException("Vuelo no valido");
+}
+
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+COMPLEJIDAD COMPUTACIONAL
+Como saber cuando un algoritmo es mejor? Es mejor aquel que resuelva el problema mas rapido. Funciones segun su tipo 

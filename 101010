@@ -1,0 +1,132 @@
+Supongamos que el arreglo esta ordenado, y no esta el numero, nos paramos a la mitad y buscamos a la mitad (Si es mas grande el num b, buscaremos a la derecha, y si es mas chico a la izquierda).
+
+package primerEjercicio;
+
+public class BusquedaBinaria {
+
+	public static boolean busquedaBinaria(int[]a, int b) {
+	int izq = 0;
+	int der = a.length - 1;
+	
+	while (izq +1 < der) {
+		int m = (izq + der)/2;
+		if (a[m]== b) {
+			return true;
+		}
+		
+		if (a[m]< b) {
+			izq = m;
+		} else {
+			der = m;
+		}
+	}
+	return a [izq] == b || a [der] ==b;
+}
+}
+
+iteracion = k 
+der - izq = (n - 1)/2 elevado a k.
+
+Complejidad logaritmica es la mejor en cuanto eficiencia.
+
+el for solo con existir es iguan a 2n + 1, 
+
+
+package primerEjercicio;
+
+public class BusquedaBinaria {
+
+	public static boolean busquedaBinaria(int[]a, int b) {
+	int izq = 0;
+	int der = a.length - 1;
+	
+	while (izq +1 < der) {
+		int m = (izq + der)/2;
+		if (a[m]== b) {
+			return true;
+		}
+		
+		if (a[m]< b) {
+			izq = m;
+		} else {
+			der = m;
+		}
+	}
+	return a [izq] == b || a [der] ==b;
+}
+}
+
+
+
+public static boolean pertenecePosicion(int[] a, int m) {
+	   for(int i = 0; i < a.length; i++) {   //2n+1
+	      a[i] = 0;// 1
+	      if (i == m) { //1
+	         return true;
+	      }
+	   }
+	   return false; //1
+	}
+
+public static void funcionBloques(int n) {
+	   int i=1;
+	   while (i < n-20){
+	      /*
+	       bloque de código de orden O(log n) */
+	      */
+	      i++;
+	   } //El primer while se realiza n - 20 veces. (n 20)+ (n-20)* [O(log) + 1)
+	   
+	   
+	   
+	   while(i < n){ // Esta comparacion la realiza 20 veces
+		   
+	      /*
+	       bloque de código de orden O( n) */
+	      */
+	      i++;
+	   } //20 + 20*[O(n)+1]
+	}
+
+// n - 20 + [(n-20) * O(log n) + 1] + 20 + 20 * O(n)+ 20
+
+
+
+public static void funcionBloques(int n) {
+	   int i=1; // 1
+	   while (i < n/2) { //n/2
+	      /* bloque de código de orden O(n^2) */
+	      i++; //1
+	   } // 1 + N/2 *(O(n**2) + 1
+	   
+	   
+	   while (i < n) { // n/2
+	      /* bloque de código de orden O(log( n)) */
+	      i++; // 1
+	   } //n/2 * (log(n) + 1)
+	   
+	   
+	   while (i < n + 100) { // 100
+	      /* bloque de código de orden O(n^3) */
+	      i++; // +1
+	   } // 100 * (n**3 + 1)
+	}
+
+
+public static double raro(int n) {
+	   if (n <= 1) { 
+	      return 1; 
+	   }
+	   return 1 + 1/raro(n-1);
+	}
+
+
+
+
+
+	public static double raro2(int n) {
+	   if(n <= 1) { 
+	      return 1;
+	   }
+	   return 1 + 1/raro2(n/2); 
+	}

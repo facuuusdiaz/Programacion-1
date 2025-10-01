@@ -1,0 +1,74 @@
+Ordenamiento por seleccion: Buscar el menor elemento del arreglo y ponerlo al principio del mismo;
+Ordenamiento por insercion: Si el segundo elemento del arreglo es mas chico que el primero lo intercambiamos, y asi seguimos con todas las demas posiciones.
+Ordenamiento por Burbujeo: Comparar los dos primeros elementos y dejar el mas grande a la dercha, y asi con todas las demas porsiciones.
+
+Orden de complejidad: En las 3 es complejidad cuadratica, por ende, realizan las mismas iteraciones y son iguales.
+
+package primeraParte;
+
+public class OrdenamientoSelccion {
+
+	void ordenarPorSeleccion(int a[]) {
+		for (int i = 0; i < a.length - 1; i++) {
+			int menor = i;
+			for( int j = i + 1; j < a.length; j++) {
+				if(a[j] < a[menor]) {
+					menor = j;
+				}
+				
+				swap (a,i,menor);
+			}
+		}
+	}
+	
+	void swap(int a[], int i, int j) {
+		int aux = a[i];
+		a [i] = a [j];
+		a [j] = aux;
+	}
+}
+
+package primeraParte;
+
+public class OrdenamientoInsercion {
+
+	void ordenamientoPorInsercion(int a[]) {
+		for (int i = 1; i < a.length; i++) {
+			int pos = 0;
+			while (pos < i && a [pos] < a [i]) {
+				pos++;
+			}
+			int temp = a[i];
+			for (int j = i - 1; j >= pos; j--) {
+				a [j+1] = a [j];
+			}
+			a[pos] = temp;
+		}
+	}
+}
+
+package primeraParte;
+
+public class OrdenamientoBurbujeo {
+
+	void ordenarPorBurbujeo(int a[]) {
+		for (int i = a.length - 1; i > 0; i--) {
+			for (int j = 0; j < i; j++) {
+				if (a[j] > a[j+1]) {
+					swap (a, j, j+1);
+				}
+			}
+		}
+	}
+	
+	void swap(int a[], int i, int j) {
+		int aux = a[i];
+		a [i] = a [j];
+		a [j] = aux;
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Una constante no cambia la complejidad

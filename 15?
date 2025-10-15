@@ -1,0 +1,19 @@
+Listas enlaazadas: Es una estructura que contiene una coleccion de elementos homogeneos (del mismo tipo), y donde hay un orden posicional entere ellos. Un dato elementañ es la unidad minia de informacion que nos proporciona un lenguaje.
+La estructura corresponde a organizaciones en memoria dinamica. En arrays es mas eficiente la obtencion de elemtnors por posicion, impelemtacion sencilla. Su desventaja es que tiene un largo fijo.
+listas enlazadas un largo variable, cada vez que necesitamos agrear un elemento se pide memoria para el mismo y guardamos una referencia a este elemento en un elemento anterior.
+
+creamos una clase nodo, que guarda el elemento que queremos almacenar y un puntero a otro nodo.
+
+public class NodoInt {
+
+public int elemento;
+public NodoInt siguiente;
+
+public Nodoint (int n) {
+this.elemento = n;
+this.siguinete = null;
+}
+}
+
+para recorrer una lista nos posicionamos en el primer noto y vamos avanzadno laa lista al referencia al siguiente.
+

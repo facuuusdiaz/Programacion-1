@@ -17,3 +17,100 @@ this.siguinete = null;
 
 para recorrer una lista nos posicionamos en el primer noto y vamos avanzadno laa lista al referencia al siguiente.
 
+package defa;
+
+public class Listas {
+	NodoInt primero;
+	
+	public void imprimir() {
+		
+		NodoInt actual = primero;
+		System.out.println("[");
+		while (actual != null) {
+			System.out.println(actual.primero + "");
+			actual = actual.siguiente;
+			
+		}
+		
+		System.out.println("]");
+	}
+	
+	public void agregarAdelante (int n) {
+		NodoInt nuevo = new NodoInt(39);
+		nuevo.siguiente = this.primero;
+		this.primero = nuevo;
+	}
+	
+	public int largo() {
+		int cant = 0;
+		NodoInt actual =this.primero;
+		while (actual != null) {
+			cant++;
+			actual = actual.siguiente;
+		}
+		
+		return cant;
+	}
+	
+	public void agregarAtras(int n) {
+		NodoInt nuevo = new NodoInt(n);
+		if (this.primero == null) {
+			this.primero = nuevo;
+			return;
+		}
+		NodoInt actual = this.primero;
+		while (actual.siguiente != null) {
+			actual = actual.siguiente;
+			actual.siguiente = nuevo;
+		}
+		
+	}
+	
+	public void agregarPorPosicion(int pos, int n) {
+		
+		int p = 0;
+		NodoInt nuevo =new NodoInt(n);
+		NodoInt actual = this.primero;
+		while (actual != null && p != pos-1) {
+			actual = actual.siguiente;
+			p++;
+		}
+		
+		if(actual != null) {
+			nuevo.siguiente = actual.siguiente;
+			actual.siguiente = nuevo;
+		
+		}
+	}
+	
+	public void quitarElemento(int e) {
+		
+		NodoInt actual = this.primero;
+		while (actual.siguiente != null) {
+			if(actual.siguiente.primero == e) {
+				actual.siguiente = actual.siguiente.siguiente;
+			}else {
+				actual = actual.siguiente;
+			}
+			
+		}
+	}
+}
+
+
+
+package defa;
+
+public class NodoInt{
+	
+	public int primero;
+	public NodoInt siguiente;
+	
+
+	public NodoInt(int n) {
+		this.primero = n;
+		this.siguiente = null;
+	}
+
+}
+

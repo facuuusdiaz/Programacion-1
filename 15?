@@ -94,7 +94,10 @@ public class Listas {
 			}
 			
 		}
-	}
+if (this.primero.primero == e {
+this.primero = this.primero.siguiente
+}
+	} 
 }
 
 

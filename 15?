@@ -101,6 +101,26 @@ this.primero = this.primero.siguiente
 }
 
 
+public void quitarPos(int pos) {
+
+	int p =0;
+	NodoInt actual = this.primero;
+	if (pos == 0){
+		this.primero = this.primero.siguiente;
+		return;
+}
+	while (actual.siguiente != null){
+		if (p != pos-1 ) {
+			p++;
+			actual = actual.siguiente;
+			} else {
+			actual.siguiente = actual.siguiente.siguiente;
+			return;
+		}
+	}
+}
+
+
 
 package defa;
 

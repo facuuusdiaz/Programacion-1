@@ -1,0 +1,19 @@
+https://www.studocu.com/es-ar/document/universidad-nacional-de-general-sarmiento/programacion-1/2023-1er-sem-tm-parcial/60903129
+
+listas doblemente enlazadas: Cada nodo tiene uanreferencia al siguiente ele,emto y tambien una referencia al elemento anterior. 
+Iteraddores : Un esquema de iteracion permite recorrer los elementos de la estructura de datos. Una buena idea es que la lista provea un iterador propio.
+
+package MarcosYKiara;
+
+import java.util.LinkedList;
+
+public class LIst {
+	
+	LinkedList <String> lista = new LinkedList<>();
+	//CONTAINS USAR EN EJERCICIO DE PARCIAL.
+	(lista.addFirst("ana"));
+	
+
+}
+
+

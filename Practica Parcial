@@ -1,0 +1,176 @@
+package PracticaClases;
+
+import java.util.LinkedList;
+
+public class Pedido {
+
+	String codigo; 
+	Paquete[] paquetes; 
+	Cliente cliente; 
+	String direccionDeEntrega;
+	String estado; // pendiente , en camino , entregado
+	
+	
+	public boolean todosMismoTipo(String tipo) {
+
+		for (Paquete p : this.paquetes) {
+			if (!p.tipo.equals(tipo)) {
+				return false	;
+			}
+		}
+		
+		return true;
+	}
+
+
+	public double todosPesan() {
+		
+		double peso = 0.0;
+		
+		for(Paquete p : this.paquetes) {
+			peso += p.peso;
+		}
+		
+		return 0;
+	}
+	
+	
+}
+
+package PracticaClases;
+
+
+import java.util.LinkedList;
+
+public class EmpresaDeRepartos {
+
+	Repartidor[] repartidores;
+	
+	public boolean pedidoMismoTipo(String tipo) {
+		
+		for (Repartidor r : this.repartidores) {
+			for (Pedido p: r.pedidosAsignados) {
+				if (p.todosMismoTipo (tipo)) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
+		
+	}
+public LinkedList<Vehiculo> vehiculosQueVanLlenos(){
+		
+	LinkedList <Vehiculo> lis = new LinkedList<>();
+	
+		for (Repartidor r : this.repartidores) {
+			for(Pedido p : r.pedidosAsignados) {
+				if (p.todosPesan() >= r.vehiculo.capacidadMxima * 0.9 &&
+						!lis.contains(r.vehiculo)) {
+					
+					lis.add(r.vehiculo);
+					
+				}
+			}
+		}
+		
+		
+		return lis;
+	
+	}
+}
+
+
+package RecursionListas;
+
+public class EjercicioRecursion {
+
+	public static boolean esVocal(char c) {
+		
+		String aux = "AaEeIiOoUu";
+		
+		return aux.indexOf(c) == - 1? false :true;
+	}
+	
+	public static String cambiarConsonante(String s, char r) {
+		
+		//Caso Base
+		
+		if (s.length() < 2) {
+			return s;
+		}
+		
+		//Caso Recursivo
+	
+		if (!esVocal(s.charAt(0)) && ! esVocal(s.charAt(1))){
+			
+			return "" + s.charAt(0) + r + cambiarConsonante(s.substring(2),r);
+		}
+			return "" + s.charAt(0) + cambiarConsonante(s.substring((1)),r);
+	
+}
+	
+	public static void main (String []args) {
+		
+		System.out.println(cambiarConsonante("Programacion" , '!'));
+	}
+}
+
+package EjercicioListas;
+
+public class ListaInt {
+
+	
+	NodoInt primero;
+	double promedio = 0.0;
+	int cant = 0;
+	
+	public double promedioPares() {
+		NodoInt actual = this.primero;
+		double promedio = 0.0;
+		
+		while (actual != null){
+			if (actual.elemento % 2 == 0) {
+				promedio += actual.elemento;
+				cant++;
+			}
+			
+			actual = actual.siguiente;
+		}
+	
+		return promedio;
+		
+	}
+	
+	
+}
+
+	public ListaInt obtenerMenoresAlPromedio() {
+			
+		ListaInt lis = new ListaInt();
+		double promedio = promedioPares();
+		
+		 NodoInt actual = this.primero;
+		 NodoInt actuallis = lis.primero;
+		 
+		 while (actual != null) {
+			 if(actual.elemento < promedio) {
+				 NodoInt nuevo = new NodoInt();
+				 nuevo.elemento = actual.elemento;
+				 if(lis.primero == null) {
+					 lis.primero = nuevo;
+					 actuallis = lis.primero;
+				 }
+				 
+				 else {
+					 actuallis.siguiente = nuevo;
+				 }
+			 }
+			 
+			 actual = actual.siguiente;
+		 }
+		
+		return lis;
+	}
+	
+	
